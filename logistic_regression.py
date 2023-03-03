@@ -65,7 +65,7 @@ def run_linear_regression(local=False):
         print("Could not retrieve filename.")
         return
 
-    iris_data = pd.read_csv(filename, header=0)
+    iris_data = pd.read_csv(filename, header=0, on_bad_lines='skip')
 
     X = iris_data.iloc[:, :2]  # we only take the first two features.
 
