@@ -8,23 +8,22 @@ def get_job_details():
     """Reads in metadata information about assets used by the algo"""
     job = dict()
     dids = os.getenv("DIDS", None)
-    logging.info(f"Logger Here: {dids}")
+    print(f"\n Logger Here: {dids} \n")
     job["dids"] = json.loads(dids)
     job["metadata"] = dict()
     job["files"] = dict()
     job["algo"] = dict()
     job["secret"] = os.getenv("secret", None)
     algo_did = os.getenv("TRANSFORMATION_DID", None)
-    logging.info(f"Logger Algo DID: {algo_did}")
+    print(f"\n Logger Algo DID: {algo_did} \n")
     if job["dids"] is not None:
         for did in job["dids"]:
             # get the ddo from disk
             filename = "/data/ddos/" + did
-            print(f"Reading json from {filename}")
-            logging.info(f"filename: {filename}")
+            print(f"Reading json from {filename} \n")
             with open(filename) as json_file:
                 ddo = json.load(json_file)
-                logging.info(f"DDO: {ddo}")
+                print(f"DDO: {ddo}")
                 # search for metadata service
                 for service in ddo["service"]:
                     if service["type"] == "metadata":
