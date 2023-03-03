@@ -29,7 +29,7 @@ def get_job_details():
                     if service["type"] == "compute":
                         job["files"][did] = list()
                         index = 0
-                        for file in service["attributes"]["main"]["files"]:
+                        for file in service["compute"]["publisherTrustedAlgorithms"]:
                             job["files"][did].append(
                                 "/data/inputs/" + did + "/" + str(index)
                             )
